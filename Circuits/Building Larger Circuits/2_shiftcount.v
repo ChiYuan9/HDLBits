@@ -1,1 +1,17 @@
-
+module top_module (
+    input clk,
+    input shift_ena,
+    input count_ena,
+    input data,
+    output [3:0] q);
+    always@(posedge clk) begin
+        if(shift_ena) begin
+            q = q << 1;
+            q = data ? q + 1 : q;
+        end
+        if(count_ena)
+            q = q - 1;
+    end
+    
+            
+endmodule
